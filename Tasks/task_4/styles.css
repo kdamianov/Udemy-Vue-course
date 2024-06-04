@@ -15,20 +15,12 @@ header {
   margin: 3rem;
   border-radius: 10px;
   padding: 1rem;
-<<<<<<< HEAD
   background-color: #1b995e;
-=======
-  background-color: #4fc08d;
->>>>>>> 0168126cb4c3b93d9dac44b2c034dee97f2c311b
   color: white;
   text-align: center;
 }
 
-<<<<<<< HEAD
-#user-goals {
-=======
-#styling {
->>>>>>> 0168126cb4c3b93d9dac44b2c034dee97f2c311b
+#assignment {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 3rem;
   border-radius: 10px;
@@ -36,22 +28,14 @@ header {
   text-align: center;
 }
 
-<<<<<<< HEAD
-#user-goals h2 {
+#assignment h2 {
   font-size: 2rem;
   border-bottom: 4px solid #ccc;
   color: #1b995e;
   margin: 0 0 1rem 0;
 }
 
-#user-goals ul {
-  list-style: none;
-  margin: 1rem 0;
-  padding: 0;
-}
-
-#user-goals li {
-  margin: 1rem 0;
+p {
   font-size: 1.25rem;
   font-weight: bold;
   background-color: #8ddba4;
@@ -60,18 +44,18 @@ header {
   border-radius: 25px;
 }
 
-#user-goals input {
+#assignment input {
   font: inherit;
   border: 1px solid #ccc;
 }
 
-#user-goals input:focus {
+#assignment input:focus {
   outline: none;
   border-color: #1b995e;
   background-color: #d7fdeb;
 }
 
-#user-goals button {
+#assignment button {
   font: inherit;
   cursor: pointer;
   border: 1px solid #ff0077;
@@ -81,22 +65,27 @@ header {
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
 }
 
-#user-goals button:hover,
-#user-goals button:active {
+#assignment button:hover,
+#assignment button:active {
   background-color: #ec3169;
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
-=======
-.demo {
-  width: calc(100% - 32px);
-  height: 100px;
-  margin: 16px;
-  border: 2px dashed #ccc;
+
+.user1 {
+  background-color: blue;
+  color: white;
 }
 
-.active{
-  border-color: rgb(133, 99, 99);
-  background-color: lightgray;
+.user2 {
+  background-color: purple;
+  color: white;
 }
->>>>>>> 0168126cb4c3b93d9dac44b2c034dee97f2c311b
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}

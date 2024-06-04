@@ -14,6 +14,7 @@
   </head>
   <body>
     <header>
+<<<<<<< HEAD
       <h1>Vue Course Goals</h1>
     </header>
     <section id="user-goals">
@@ -24,6 +25,23 @@
       <ul v-else>
         <li v-for="(goal, index) in goals" @click="removeGoal(index)">{{ goal }}</li>
       </ul>
+=======
+      <h1>Vue Dynamic Styling</h1>
+    </header>
+    <section id="styling">
+      <div
+        :class="['demo', boxAClasses]"
+        @click="boxSelected('A')"
+      ></div>
+      <div
+        :class="['demo', boxBClasses]"
+        @click="boxSelected('B')"
+      ></div>
+      <div
+        :class="['demo', boxCClasses]"
+        @click="boxSelected('C')"
+      ></div>
+>>>>>>> 0168126cb4c3b93d9dac44b2c034dee97f2c311b
     </section>
   </body>
 </html>
