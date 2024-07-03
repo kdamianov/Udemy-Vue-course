@@ -12,7 +12,10 @@
     <!-- Dynamic component -->
     <!-- <active-goals v-if="selectedComponent === 'active-goals'"></active-goals>
     <manage-goals v-if="selectedComponent === 'manage-goals'"></manage-goals> -->
-    <component :is="selectedComponent"></component>
+    <!-- To cash and keep the component and not delete it -->
+    <keep-alive>
+      <component :is="selectedComponent"></component>
+    </keep-alive>
   </div>
 </template>
 
