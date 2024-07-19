@@ -43,6 +43,7 @@
         </p>
         <div>
           <base-button>Submit</base-button>
+          <p v-if="error">Oops! {{ error }}</p>
         </div>
       </form>
     </base-card>
@@ -56,6 +57,7 @@ export default {
       enteredName: '',
       chosenRating: null,
       invalidInput: false,
+      error: null,
     };
   },
   // emits: ['survey-submit'],
@@ -73,6 +75,7 @@ export default {
       // });
 
       // accepts the URL as 1st param
+      this.error = null;
       fetch(
         'https://vue3-http-demo-e18f6-default-rtdb.europe-west1.firebasedatabase.app/surveys.json',
         {
@@ -85,7 +88,14 @@ export default {
             rating: this.chosenRating,
           }),
         }
-      );
+      ).then((resp) => {
+        if(!resp.ok) {
+          throw new Error(resp.statusText)
+        }
+      })
+      .catch((err) => {
+          this.error = err;
+        });
       this.enteredName = '';
       this.chosenRating = null;
     },
