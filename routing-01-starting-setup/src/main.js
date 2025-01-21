@@ -21,7 +21,8 @@ const router = createRouter({
             component: UsersList
         }
         ,
-        { path: '/teams/:teamId', component: TeamMember },
+        //with 'props: true' we define that the dynamic param will be passed as props!
+        { path: '/teams/:teamId', component: TeamMember, props: true},
 
     ]
 });
