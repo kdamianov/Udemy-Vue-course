@@ -4,6 +4,7 @@
     <ul>
       <user-item v-for="member in members" :key="member.id" :name="member.fullName" :role="member.role"></user-item>
     </ul>
+    <router-link to="/teams/t2">Go to Team 2</router-link>
   </section>
 </template>
 
@@ -21,18 +22,31 @@ export default {
       members: [],
     };
   },
+  methods: {
+    loadTemMembers(route) {
+      const teamId = route.params.teamId;
+      const selectedTeam = this.teams.find(team => team.id === teamId);
+      const members = selectedTeam.members;
+      const selectedMembers = [];
+      for (const member of members) {
+        const selectedUser = this.users.find(user => user.id === member);
+        selectedMembers.push(selectedUser);
+      }
+      this.members = selectedMembers;
+      this.teamName = selectedTeam.name;
+    },
+  },
+  //this data is loaded when is created
   created() {
     //holds all the route params. in this case "teamId"
-    const teamId = this.$route.params.teamId;
-    const selectedTeam = this.teams.find(team => team.id === teamId);
-    const members = selectedTeam.members;
-    const selectedMembers = [];
-    for (const member of members) {
-      const selectedUser = this.users.find(user => user.id === member);
-      selectedMembers.push(selectedUser);
+    this.loadTemMembers(this.$route);
+
+  },
+  //the watcher will run whenever the route changes
+  watch: {
+    $route(newRoute) {
+      this.loadTemMembers(newRoute)
     }
-    this.members = selectedMembers;
-    this.teamName = selectedTeam.name;
   }
 };
 </script>
