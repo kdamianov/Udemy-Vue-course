@@ -13,6 +13,7 @@ import UserItem from '../users/UserItem.vue';
 
 export default {
   inject: ['users', 'teams'],
+  props: ['teamId'],
   components: {
     UserItem
   },
@@ -23,8 +24,7 @@ export default {
     };
   },
   methods: {
-    loadTemMembers(route) {
-      const teamId = route.params.teamId;
+    loadTemMembers(teamId) {
       const selectedTeam = this.teams.find(team => team.id === teamId);
       const members = selectedTeam.members;
       const selectedMembers = [];
@@ -39,13 +39,13 @@ export default {
   //this data is loaded when is created
   created() {
     //holds all the route params. in this case "teamId"
-    this.loadTemMembers(this.$route);
+    this.loadTemMembers(this.teamId);
 
   },
   //the watcher will run whenever the route changes
   watch: {
-    $route(newRoute) {
-      this.loadTemMembers(newRoute)
+    teamId(newId) {
+      this.loadTemMembers(newId)
     }
   }
 };
