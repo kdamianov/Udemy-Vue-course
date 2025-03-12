@@ -2,7 +2,12 @@
   <section>
     <h2>{{ teamName }}</h2>
     <ul>
-      <user-item v-for="member in members" :key="member.id" :name="member.fullName" :role="member.role"></user-item>
+      <user-item
+        v-for="member in members"
+        :key="member.id"
+        :name="member.fullName"
+        :role="member.role"
+      ></user-item>
     </ul>
     <router-link to="/teams/t2">Go to Team 2</router-link>
   </section>
@@ -15,7 +20,7 @@ export default {
   inject: ['users', 'teams'],
   props: ['teamId'],
   components: {
-    UserItem
+    UserItem,
   },
   data() {
     return {
@@ -24,30 +29,27 @@ export default {
     };
   },
   methods: {
-    loadTemMembers(teamId) {
-      const selectedTeam = this.teams.find(team => team.id === teamId);
+    loadTeamMembers(teamId) {
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
       const members = selectedTeam.members;
       const selectedMembers = [];
       for (const member of members) {
-        const selectedUser = this.users.find(user => user.id === member);
+        const selectedUser = this.users.find((user) => user.id === member);
         selectedMembers.push(selectedUser);
       }
       this.members = selectedMembers;
       this.teamName = selectedTeam.name;
     },
   },
-  //this data is loaded when is created
   created() {
-    //holds all the route params. in this case "teamId"
-    this.loadTemMembers(this.teamId);
-
+    // this.$route.path // /teams/t1
+    this.loadTeamMembers(this.teamId);
   },
-  //the watcher will run whenever the route changes
   watch: {
     teamId(newId) {
-      this.loadTemMembers(newId)
-    }
-  }
+      this.loadTeamMembers(newId);
+    },
+  },
 };
 </script>
 

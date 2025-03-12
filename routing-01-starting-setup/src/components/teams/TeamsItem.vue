@@ -13,8 +13,11 @@ export default {
     teamMembersLink() {
       // return '/teams/' + this.id;
       return {
-        path: '/teams' + this.id
+        name: 'team-members',
+        params: { teamId: this.id },
+        query: { sort: 'asc' }
       };
+      // this.$router.push({ name: 'team-members', params: { teamId: this.id } });
     }
   }
 };

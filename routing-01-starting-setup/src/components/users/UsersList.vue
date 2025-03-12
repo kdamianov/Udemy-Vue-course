@@ -1,6 +1,6 @@
 <template>
+  <button @click="confirmInput">Confirm</button>
   <ul>
-    <button @click="confirmInput">Confirm</button>
     <user-item v-for="user in users" :key="user.id" :name="user.fullName" :role="user.role"></user-item>
   </ul>
 </template>
@@ -15,8 +15,8 @@ export default {
   inject: ['users'],
   methods: {
     confirmInput() {
-      //when we want to redirect to another page
-      this.$router.push('/teams')
+      // do something
+      this.$router.push('/teams');
     }
   }
 };
