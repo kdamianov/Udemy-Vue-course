@@ -38,7 +38,15 @@ const router = createRouter({
 
         //dynamic segment for any character combination, must be las, not to override all the above
         { path: '/:notFound(.*)', component: NotFound },
-    ]
+    ],
+    linkActiveClass: 'active',
+    // a method for a scroll behaviour when page changes
+    scrollBehavior(savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        }
+        return { left: 0, top: 0 };
+    }
 });
 
 app.use(router);
