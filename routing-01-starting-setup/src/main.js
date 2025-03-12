@@ -32,6 +32,10 @@ const router = createRouter({
             path: '/users', components: {
                 default: UsersList,
                 footer: UsersFooter
+            },
+            //protecting specific route
+            beforeEnter(to, from, next) {
+                next();
             }
         },
         //with 'props: true' we define that the dynamic param will be passed as props!
@@ -49,7 +53,9 @@ const router = createRouter({
     }
 });
 router.beforeEach(function (to, from, next) {
-    next()
+    //can be used fo authentication
+
+    next() //redirect
 });
 
 app.use(router);

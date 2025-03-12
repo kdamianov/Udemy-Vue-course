@@ -18,6 +18,11 @@ export default {
       // do something
       this.$router.push('/teams');
     }
+  },
+  //will be executed before navigation to this component is confirmed
+  beforeRouteEnter(to, from, next) {
+    console.log("Users list component before route enter");
+    next();
   }
 };
 </script>

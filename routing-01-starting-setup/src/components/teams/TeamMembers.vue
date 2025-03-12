@@ -2,12 +2,7 @@
   <section>
     <h2>{{ teamName }}</h2>
     <ul>
-      <user-item
-        v-for="member in members"
-        :key="member.id"
-        :name="member.fullName"
-        :role="member.role"
-      ></user-item>
+      <user-item v-for="member in members" :key="member.id" :name="member.fullName" :role="member.role"></user-item>
     </ul>
     <router-link to="/teams/t2">Go to Team 2</router-link>
   </section>
@@ -44,6 +39,13 @@ export default {
   created() {
     // this.$route.path // /teams/t1
     this.loadTeamMembers(this.teamId);
+  },
+  //will be called whenever this component is about to be used with new data
+  beforeRouteUpdate(to, from, next) {
+    //this will load info based on the new params
+    console.log("Before route update");
+    // this.loadTeamMembers(to.params.teamId)
+    next();
   },
   watch: {
     teamId(newId) {
