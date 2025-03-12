@@ -48,6 +48,9 @@ const router = createRouter({
         return { left: 0, top: 0 };
     }
 });
+router.beforeEach(function (to, from, next) {
+    next()
+});
 
 app.use(router);
 app.mount('#app');
